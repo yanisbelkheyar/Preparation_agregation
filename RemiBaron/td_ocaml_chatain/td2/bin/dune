@@ -1,5 +1,0 @@
-(executable
- (public_name td2)
- (name main)
- (libraries td2)
- (flags (:standard -w -69)))
