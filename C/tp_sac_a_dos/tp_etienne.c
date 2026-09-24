@@ -44,12 +44,43 @@ void print_sad(){
 
 
 long calc_valBorneSup(){
+    int tri_fini=0;
+    while (!tri_fini){
+        tri_fini=1;
+        for (int i=0; i<n-1;i++){
+            if(vals[i]*poids[i+1]<vals[i+1]*poids[i]){
+                tri_fini=0;
+                int val_tmp = vals[i];
+                vals[i]=vals[i+1];
+                vals[i+1]=val_tmp;
+                int poids_tmp = poids[i];
+                poids[i]=poids[i+1];
+                poids[i+1]=poids_tmp;
+            }
+        }
+    }
+    long borne=0;
+    long reste=pMax;
+    for (int i=0;i<n;i++){
+        if (reste>poids[i]){
+            reste=reste-poids[i];
+            borne=borne+vals[i];
+        }
+        else if (reste>0){
+            borne=borne+((vals[i]*reste)/poids[i]);
+            reste=0;
+        }
+        else {return borne;}
+    }
+    return borne;
+
 }
 
-void main(int argc, char** argv){
+int main(int argc, char** argv){
     init_sad();
     if(print_final_opt)
         print_sad();
     long bsup = calc_valBorneSup();
     printf("bsup=%ld\n",bsup);
+    return 0;
 }
