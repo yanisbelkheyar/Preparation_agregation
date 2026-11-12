@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <math.h>
 
 typedef struct tas_struct {
     int* tab;
@@ -13,7 +14,11 @@ typedef struct tas_struct {
 } tas ;
 
 tas creer(int l);
-int get_min(tas t);
-bool est_plein(tas t);
+int get_min(tas* t);
+bool est_plein(tas* t);
+bool est_vide(tas* t);
+void print(tas* t);
+bool inserer(tas* t,int val);
+int supprime_min(tas* t);
 
 #endif
