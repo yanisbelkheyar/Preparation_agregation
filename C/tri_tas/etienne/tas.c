@@ -8,7 +8,7 @@ tas creer(int l) {
 
 int get_min(tas* t) {
     if (est_vide(t)) {
-        return (-1);
+        return INT_MIN;
     }
     else {
         return (t->tab[0]);
@@ -85,12 +85,23 @@ int echange_down(tas* t,int i){
 
 int supprime_min(tas* t){
     int min_val=get_min(t);
-    if (min_val==-1) return -1;
-    t->tab[0]=t->tab[t->count];
+    if (min_val==INT_MIN) return INT_MIN;
+    t->tab[0]=t->tab[t->count-1];
     t->count--;
     int i=0;
     while (i!=-1){
         i=echange_down(t,i);
     }
     return (min_val);
+}
+
+void tris_tas(int* tab, int l){
+    tas t=creer(l);
+    for (int i=0;i<l;i++){
+        inserer(&t,tab[i]);
+    }
+    // print(&t);
+    for (int i=0;i<l;i++){
+        tab[i]=supprime_min(&t);
+    }
 }
