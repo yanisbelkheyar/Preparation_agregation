@@ -44,3 +44,10 @@ void extraction_sucessive_min_tas(tas *t,int *tab,int taille_tab){
 
 }
 
+void trie_tas(int* tab, int taille){
+    tas* t = creation_tas_depuis_tableau(tab,taille_tableau);
+    extraction_sucessive_min_tas(t,tab,taille_tableau);
+    free(t.tab);
+    free(t);
+}
+

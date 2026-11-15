@@ -8,5 +8,9 @@ tas* creation_tas_depuis_tableau(int tab[],int taille_tab);
 //On extrait sucessivement depuis le tas t le min du tas et on l'ajoute sucessivement au tableau initial
 void extraction_sucessive_min_tas(tas *t,int *tab,int taille_tab);
 
+void trie_tas(int* tab, int taille);
+
 //affichage du tableau trié
 void print_tableau(int *tableau,int taille_tab);
+
+
